@@ -1,38 +1,93 @@
 import java.util.Scanner;
-class Book
-{
-String name;
-String author;
-float price;
-int num_pages;
 
+class Book {
+     String name;
+     String author;
+     double price;
+     int numPages;
 
-Book(String name,String author,int price,int num_pages)
-{
-this.name=name;
-this.author=author;
-this.price=price;
-this.num_pages=num_pages;
-}//constructor end
+    // Constructor
+    public Book(String name, String author, double price, int numPages) {
+        this.name = name;
+        this.author = author;
+        this.price = price;
+        this.numPages = numPages;
+    }
 
+    // Setter methods
+    public void setName(String name) {
+        this.name = name;
+    }
 
-public String toString() //overriding the toString() method  
-{
-  return "Name:"+name+"\nAuthor:"+author+"\nPrice:"+price+"\nPage_no:"+num_pages;  
- }  
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
-}//book class end
+    public void setNumPages(int numPages) {
+        this.numPages = numPages;
+    }
 
-class Book_details
-{
-public static void main(String args[])
-{
-Book b1=new Book("book1","auth1",250,254);
-Book b2=new Book("book2","auth2",310,471);
-Book b3=new Book("book3","auth3",291,926);
-System.out.println(b1+"\n");
-System.out.println(b2+"\n");
-System.out.println(b3+"\n");
+    // Getter methods
+    public String getName() {
+        return name;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public int getNumPages() {
+        return numPages;
+    }
+
+    // toString method @Override
+    public String toString() {
+        return "\nBook Details:\n" +
+                "Name: " + name + "\n" +
+                "Author: " + author + "\n" +
+                "Price($): " + price + "\n" +
+                "Number of Pages: " + numPages;
+    }
 }
-}
+
+public class Main_book {
+    public static void main(String args[]) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of books: ");
+        int n = scanner.nextInt();
+        scanner.nextLine(); // Consume newline left-over
+
+        Book[] books = new Book[n];
+
+        for (int i = 0; i < n; i++) {
+            System.out.println("\nEnter details for Book " + (i + 1));
+            System.out.print("Enter name: ");
+            String name = scanner.nextLine();
+            System.out.print("Enter author: ");
+            String author = scanner.nextLine();
+            System.out.print("Enter price: ");
+            double price = scanner.nextDouble();
+            System.out.print("Enter number of pages: ");
+            int numPages = scanner.nextInt();
+            scanner.nextLine(); // Consume newline left-over
+
+            books[i] = new Book(name, author, price, numPages);
+        }
+
+        System.out.println("\nBook Details:");
+        for (int i = 0; i < n; i++) {
+            System.out.println(books[i].toString());
+            System.out.println();
+        }
+    }
+  }
+       
